@@ -1,5 +1,6 @@
 package rustamscode.library_api.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -23,6 +24,7 @@ public class Author {
     private LocalDate birthDate;
 
     @ManyToMany(mappedBy = "authors")
+    @JsonBackReference
     private List<Book> books;
 
 }

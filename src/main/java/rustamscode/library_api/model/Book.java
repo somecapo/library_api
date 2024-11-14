@@ -1,5 +1,7 @@
 package rustamscode.library_api.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -27,9 +29,12 @@ public class Book {
             joinColumns = @JoinColumn(name = "book_id"),
             inverseJoinColumns = @JoinColumn(name = "author_id")
     )
+
+    @JsonManagedReference
     private List<Author> authors;
 
     @OneToMany(mappedBy = "book")
+    @JsonIgnore
     private List<Transaction> transactions;
 
 }

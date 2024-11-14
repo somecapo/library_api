@@ -1,5 +1,6 @@
 package rustamscode.library_api.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
@@ -23,6 +24,7 @@ public class Reader {
     private LocalDate birthDate;
 
     @OneToMany(mappedBy = "reader")
+    @JsonIgnore
     private List<Transaction> transactions;
 
 }

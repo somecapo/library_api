@@ -3,6 +3,8 @@ package rustamscode.library_api.model;
 import jakarta.persistence.*;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 
 import java.time.LocalDateTime;
 
@@ -22,6 +24,8 @@ public class Transaction {
     private LocalDateTime operationTime;
 
     @ManyToOne
+    @JoinColumn(name = "reader_phone_number", referencedColumnName = "phoneNumber")
+    @JsonBackReference
     private Reader reader;
 
     @ManyToOne
